@@ -1,16 +1,33 @@
-import { useRouter } from 'expo-router';
-import { useEffect } from 'react';
+import { Link } from 'expo-router';
+import { StyleSheet } from 'react-native';
 
-export default function Index() {
-    const router = useRouter();
+import ThemedText from '@/components/ThemedText';
+import ThemedView from '@/components/ThemedView';
 
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            router.replace('/home');
-        }, 0);
-
-        return () => clearTimeout(timeout);
-    }, []);
-
-    return null;
+export default function HomeScreen() {
+  return (
+    <ThemedView style={styles.container}>
+      <ThemedText>
+        ¡Bienvenido a Inicio!
+      </ThemedText>
+      <ThemedText type="link">
+        <Link href="/profile">
+          Ir a mi perfil
+        </Link>
+      </ThemedText>
+      <ThemedText type="link">
+        <Link href="/new-expense">
+          Añadir nueva expensa
+        </Link>
+      </ThemedText>
+    </ThemedView>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
