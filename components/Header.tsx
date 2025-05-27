@@ -13,14 +13,14 @@ export default function Header() {
         >
             <ImageLogo />
             <AppNameLogo />
+            {/* <ThemeSwitch /> */}
         </ThemedView>
     );
 }
 
 const styles = StyleSheet.create({
     header: {
-        paddingTop: 78,
-        paddingBottom: 16,
+        paddingVertical: 16,
         paddingHorizontal: 10,
         flex: 1,
         flexWrap: 'wrap',

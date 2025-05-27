@@ -3,13 +3,14 @@ import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 
 import Header from '@/components/Header';
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
+    const colorScheme = useColorScheme();
     const [loaded] = useFonts({
         SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
     });
@@ -20,15 +21,19 @@ export default function RootLayout() {
     }
 
     return (
-        <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-            <Stack
-              screenOptions={{
-                header: () => <Header />,
-              }}
-            >
-                <Stack.Screen name="index" options={{ title: 'Inicio' }} />
-            </Stack>
-            <StatusBar style="auto" />
-        </ThemeProvider>
+        <SafeAreaProvider>
+            <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+                <SafeAreaView style={{ flex: 1 }}>
+                    <Stack
+                      screenOptions={{
+                        header: () => <Header />,
+                      }}
+                    >
+                        <Stack.Screen name="index" options={{ title: 'Inicio' }} />
+                    </Stack>
+                    <StatusBar style="auto" />
+                </SafeAreaView>
+            </ThemeProvider>
+        </SafeAreaProvider>
     );
 }
