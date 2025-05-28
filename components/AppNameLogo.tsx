@@ -6,7 +6,7 @@ import ThemedView from './ThemedView';
 export default function AppNameLogo() {
     return (
         <ThemedView
-            style={ styles.titleContainer }
+            stylesOverride={ styles.container }
         >
             <ThemedText
                 type="title"
@@ -19,13 +19,14 @@ export default function AppNameLogo() {
 }
 
 const styles = StyleSheet.create({
-    titleContainer: {
+    container: {
+        height: 50,
         paddingLeft: 10,
-        height: 64,
         flexDirection: 'column',
         justifyContent: 'center',
     },
     title: {
-        lineHeight: 64,
+        fontSize: 50,
+        lineHeight: 55,
     },
 });
