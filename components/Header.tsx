@@ -9,7 +9,6 @@ import { useThemeColor } from '@/hooks/useThemeColor';
 
 export default function Header() {
     const backgroundColor = useThemeColor({}, 'background');
-    const text = useThemeColor({}, 'text');
 
     return (
         <SafeAreaView
@@ -27,11 +26,6 @@ export default function Header() {
             >
                 <ImageLogo />
                 <AppNameLogo />
-                {/* <ThemeSwitch /> */}
-                {/* <ThemedView style={[
-                    styles.border,
-                    { borderBottomColor: text }
-                ]} /> */}
             </ThemedView>
         </SafeAreaView>
     );

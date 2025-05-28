@@ -1,12 +1,17 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import Summary from '@/components/Summary';
 import ThemedView from '@/components/ThemedView';
+import UpcomingPayments from '@/components/UpcomingPayments';
 
 export default function HomeScreen() {
+    const insets = useSafeAreaInsets();
+
     return (
-        <ThemedView stylesOverride={ styles.container } >
+        <ThemedView stylesOverride={[ styles.container, { paddingTop: Platform.OS === 'web' ? 22 : insets.top + 64 } ]} >
             <Summary />
+            <UpcomingPayments />
         </ThemedView>
     );
 }
@@ -14,8 +19,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 140,
-        flexDirection: 'row',
-        justifyContent: 'center',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
     },
 });
