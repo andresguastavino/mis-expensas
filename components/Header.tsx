@@ -28,10 +28,10 @@ export default function Header() {
                 <ImageLogo />
                 <AppNameLogo />
                 {/* <ThemeSwitch /> */}
-                <ThemedView style={[
+                {/* <ThemedView style={[
                     styles.border,
                     { borderBottomColor: text }
-                ]} />
+                ]} /> */}
             </ThemedView>
         </SafeAreaView>
     );

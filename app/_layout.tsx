@@ -10,6 +10,7 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 import { useThemeColor } from '@/hooks/useThemeColor';
 
 import Header from '@/components/Header';
+import ThemedView from '@/components/ThemedView';
 
 export default function RootLayout() {
     const colorScheme = useColorScheme();
@@ -25,26 +26,14 @@ export default function RootLayout() {
     }
 
     return (
-        <SafeAreaProvider
-            style={[
-                styles.container,
-                { backgroundColor },
-            ]}
-        >
-            <ThemeProvider
-                value={ colorScheme === 'dark' ? DarkTheme : DefaultTheme }
-            >
-                <Stack
-                    screenOptions={{
-                        header: () => <Header />,
-                    }}
-                >
-                    <Stack.Screen
-                        name="index"
-                        options={{ title: 'Inicio' }}
-                    />
-                </Stack>
-                <StatusBar style="auto" />
+        <SafeAreaProvider>
+            <ThemeProvider value={ colorScheme === 'dark' ? DarkTheme : DefaultTheme } >
+                <ThemedView stylesOverride={ styles.container } >
+                    <Stack screenOptions={{ header: () => <Header />, }} >
+                        <Stack.Screen name="index" options={{ title: 'Inicio' }} />
+                    </Stack>
+                    <StatusBar style="auto" />
+                </ThemedView>
             </ThemeProvider>
         </SafeAreaProvider>
     );
@@ -52,6 +41,7 @@ export default function RootLayout() {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     paddingHorizontal: 16,
   },
 });

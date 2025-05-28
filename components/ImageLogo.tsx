@@ -1,20 +1,15 @@
-import { useColorScheme } from '@/hooks/useColorScheme';
-import { Image, StyleSheet } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import ThemedView from './ThemedView';
 
-const darkLogo = require('../assets/images/logo_dark.png');
-const lightLogo = require('../assets/images/logo_light.png');
-
 export default function ImageLogo() {
-    const colorScheme = useColorScheme();
-
     return (
         <ThemedView stylesOverride={styles.container}>
-            <Image
-                source={ colorScheme === 'dark' ? darkLogo : lightLogo }
-                style={ styles.logo }
-            />
+            <View style={ styles.logoBackground } >
+                <Text style={ styles.logoText }>
+                    P
+                </Text>
+            </View>
         </ThemedView>
     );
 }
@@ -24,8 +19,19 @@ const styles = StyleSheet.create({
         width: 50,
         height: 50,
     },
-    logo: {
+    logoBackground: {
         width: '100%',
         height: '100%',
+        backgroundColor: '#4A9066',
+        borderWidth: 1,
+        borderRadius: 15,
+        borderColor: '#000',
+    },
+    logoText: {
+        color: '#DFF6E4',
+        fontSize: 50,
+        lineHeight: 55,
+        fontWeight: 'bold',
+        textAlign: 'center',
     },
 });
