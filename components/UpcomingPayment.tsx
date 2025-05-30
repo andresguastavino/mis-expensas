@@ -1,20 +1,16 @@
 import { FontAwesome } from '@expo/vector-icons';
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
-import ThemedText from "./ThemedText";
-import ThemedView from "./ThemedView";
+import ThemedText from './ThemedText';
+import ThemedView from './ThemedView';
 
-export type UpcomingPaymentProps = {
-    name: string;
-    dueDate: string;
-    amount: number;
-}
+import { PaymentType } from '../types/Payment';
 
 export default function UpcomingPayment({
     name,
     dueDate,
     amount
-}: UpcomingPaymentProps) {
+}: PaymentType) {
     return (
         <ThemedView style={ styles.container } >
             <ThemedView stylesOverride={ styles.amountContainer }>
@@ -41,11 +37,9 @@ export default function UpcomingPayment({
 
 const styles = StyleSheet.create({
     container: {
-        width: '100%',
-        flex: 1,
+        paddingTop: 15,
         flexWrap: 'wrap',
         flexDirection: 'row',
-        paddingTop: 15,
     },
     amountContainer: {
         width: '45%',
