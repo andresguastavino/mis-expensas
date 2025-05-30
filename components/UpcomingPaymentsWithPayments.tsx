@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 
 import ThemedText from './ThemedText';
 import UpcomingPayment from './UpcomingPayment';
-import ThemedView from './ThemedView';
 
 import { PaymentType } from '../types/Payment';
 
@@ -27,12 +26,24 @@ export default function UpcomingPaymentsWithPayments({
             }
             {
                 payments?.length > 3 && (
-                    <ThemedText type="link" stylesOverride={{ textAlign: 'right', fontWeight: 'bold', color: '#4A9066', marginTop: 5, }}>
+                    <ThemedText
+                        type="link"
+                        stylesOverride={ styles.link }
+                    >
                         > Ir al Calendario para ver todos los pagos
                     </ThemedText>
                 )
             }
         </>
-
     );
 }
+
+const styles = StyleSheet.create({
+    link: {
+        textAlign: 'right',
+        fontWeight: 'bold',
+        color: '#4A9066',
+        marginTop: 5,
+        cursor: 'pointer',
+    },
+});
